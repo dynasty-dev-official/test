@@ -17,17 +17,28 @@ console.log("Fetcing");
 // console.log("\n\n");
 // console.log("LOGIN Data", await otherRes.text());
 
-import puppeteer from "puppeteer";
-// Or import puppeteer from 'puppeteer-core';
+// import puppeteer from "puppeteer";
+// // Or import puppeteer from 'puppeteer-core';
 
-// Launch the browser and open a new blank page
-const browser = await puppeteer.launch();
-const page = await browser.newPage();
+// // Launch the browser and open a new blank page
+// const browser = await puppeteer.launch();
+// const page = await browser.newPage();
 
-// Navigate the page to a URL.
-await page.goto("https://aaue.waeup.org/login");
+// // Navigate the page to a URL.
+// await page.goto("https://aaue.waeup.org/login");
 
-console.log(await page.content());
+// console.log(await page.content());
 
-await page.close();
-await browser.close();
+// await page.close();
+// await browser.close();
+
+Bun.serve({
+  routes: {
+    "/": (req) => {
+      console.log(req.headers);
+
+      return new Response(JSON.stringify({ headers: req.headers }));
+    },
+  },
+  port: 6000,
+});
