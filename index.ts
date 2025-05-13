@@ -34,10 +34,10 @@ console.log("Fetcing");
 
 Bun.serve({
   routes: {
-    "/": (req) => {
+    "/": async (req, s) => {
       console.log("\n\n\n");
 
-      console.log(req.headers);
+      console.log(req.destination, s.requestIP(req), req);
 
       return new Response(JSON.stringify({ headers: req.headers }));
     },
