@@ -42,7 +42,10 @@ Bun.serve({
       return new Response(JSON.stringify({ headers: req.headers }));
     },
   },
-  fetch: () => {
+  fetch: (req) => {
+    console.log("\n\n\n");
+
+    console.log(req.headers);
     return new Response("NOT FOUND", { status: 404 });
   },
   port: 4000,
